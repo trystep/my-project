@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+Title
+{% endblock %}
+{% block description %}
+Title
+{% endblock %}
+{% block container %}
+
+<h1 id="title_if_block_IP" class="jumbotron-heading text-center"></h1>
+
+<script charset="utf-8">
+function parseURL(url) {
+    var parser = document.createElement('a'),
+        searchObject = {},
+        queries, split, i;
+    // Let the browser do the work
+    parser.href = url;
+    // Convert query string to object
+    queries = parser.search.replace(/^\?/, '').split('&');
+    for( i = 0; i < queries.length; i++ ) {
+        split = queries[i].split('=');
+        searchObject[split[0]] = split[1];
+    }
+    return {
+        protocol: parser.protocol,
+        host: parser.host,
+        hostname: parser.hostname,
+        port: parser.port,
+        pathname: parser.pathname,
+        search: parser.search,
+        searchObject: searchObject,
+        hash: parser.hash
+    };
+}
+
+parser = parseURL(window.location.href)
+title=parser.search
+title=title.replace("?search=", "")
+
+title=decodeURIComponent(title)
+
+document.getElementById("title_if_block_IP").innerHTML = title;
+
+
+</script>
+<hr>
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ embed }}?rel=0"
+            allowfullscreen></iframe>
+</div>
+<hr>
+{% endblock %}
+
