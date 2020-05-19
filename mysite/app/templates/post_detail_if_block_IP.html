@@ -1,10 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}
-Title
-{% endblock %}
-{% block description %}
-Title
-{% endblock %}
+
 {% block container %}
 
 <h1 id="title_if_block_IP" class="jumbotron-heading text-center"></h1>
@@ -41,7 +36,7 @@ title=title.replace("?search=", "")
 title=decodeURIComponent(title)
 
 document.getElementById("title_if_block_IP").innerHTML = title;
-
+document.getElementById("title-page").innerHTML = title;
 
 </script>
 <hr>
