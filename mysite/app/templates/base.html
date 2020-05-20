@@ -61,7 +61,7 @@
 
     <section class="jumbotron text-center">
         <div class="container">
-            <h2 class="jumbotron-heading">Поиск и просмотр видео онлайн</h2>
+            <h2 id="title-search" class="jumbotron-heading">Поиск и просмотр видео онлайн</h2>
             <p class="lead text-muted">Смотрите любимые видео, слушайте любимые песни и делитесь ими с друзьями,
                 близкими и целым миром!</p>
             <div class="col">
@@ -119,5 +119,44 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
+<script charset="utf-8">
+function replaceAll(txt, replace, with_this) {
+return txt.replace(new RegExp(replace, 'g'),with_this);
+}
+
+function parseURL(url) {
+    var parser = document.createElement('a'),
+        searchObject = {},
+        queries, split, i;
+    // Let the browser do the work
+    parser.href = url;
+    // Convert query string to object
+    queries = parser.search.replace(/^\?/, '').split('&');
+    for( i = 0; i < queries.length; i++ ) {
+        split = queries[i].split('=');
+        searchObject[split[0]] = split[1];
+    }
+    return {
+        protocol: parser.protocol,
+        host: parser.host,
+        hostname: parser.hostname,
+        port: parser.port,
+        pathname: parser.pathname,
+        search: parser.search,
+        searchObject: searchObject,
+        hash: parser.hash
+    };
+}
+
+parser = parseURL(window.location.href)
+title=parser.search
+title=title.replace("?search=", "")
+title=decodeURIComponent(title)
+title=title.replace(/\+/g, " ");
+
+document.getElementById("title-page").innerHTML = title;
+document.getElementById("title-search").innerHTML = title;
+
+</script>
 </body>
 </html>
