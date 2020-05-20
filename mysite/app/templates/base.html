@@ -15,6 +15,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta name="yandex-verification" content="7816d3b4e91c492c" />
 </head>
 
 <body>
@@ -106,7 +107,24 @@
             <a href="#">Наверх</a>
         </p>
         <p>Все права принадлежат &copy;YouTube и авторам видео.</p>
-    </div>
+
+
+<!--LiveInternet counter--><a href="//www.liveinternet.ru/click"
+target="_blank"><img id="licnt36CB" width="88" height="31" style="border:0" 
+title="LiveInternet: показано число просмотров и посетителей за 24 часа"
+src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAEALAAAAAABAAEAAAIBTAA7"
+alt=""/></a>
+
+<br>
+
+<script>(function(d,s){d.getElementById("licnt36CB").src=
+"//counter.yadro.ru/hit?t54.6;r"+escape(d.referrer)+
+((typeof(s)=="undefined")?"":";s"+s.width+"*"+s.height+"*"+
+(s.colorDepth?s.colorDepth:s.pixelDepth))+";u"+escape(d.URL)+
+";h"+escape(d.title.substring(0,150))+";"+Math.random()})
+(document,screen)</script><!--/LiveInternet-->
+
+</div>    
 </footer>
 
 <!-- Bootstrap core JavaScript -->
@@ -153,6 +171,7 @@ title=parser.search
 title=title.replace("?search=", "")
 title=decodeURIComponent(title)
 title=title.replace(/\+/g, " ");
+title=title.replace(/\_/g, " ");
 
 document.getElementById("title-page").innerHTML = title;
 document.getElementById("title-search").innerHTML = title;
