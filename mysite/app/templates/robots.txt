@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 
 Crawl-delay: 2
-Host: 127.0.0.1:8000
-Sitemap: http://127.0.0.1:8000/sitemap.xml
+Host: parf-vlog.ru
+Sitemap: http://parf-vlog.ru/sitemap.xml

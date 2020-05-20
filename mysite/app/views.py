@@ -99,10 +99,9 @@ def post_detail(request, slug):
         # Прокси
         ##########################################################################
         useragents_list = open(
-            'C:\\MyFolder\\Project\\untitled\\mysite\\app\\scraper\\useragents.txt').read().split('\n')
+            "/home/django/my-project/mysite/app/scraper/useragents.txt").read().split('\n')
         proxy_list = open(
-            'C:\\MyFolder\\Project\\untitled\\mysite\\app\\scraper\\proxies.txt').read().split(
-            '\n')
+            "/home/django/my-project/mysite/app/scraper/proxies.txt").read().split('\n')
         useragent = {'User-Agent': choice(useragents_list)}
         proxy = {'http': 'http://' + choice(proxy_list)}
         ##########################################################################
