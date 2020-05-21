@@ -24,7 +24,8 @@ def search(request):
     link_output = []  # OUTPUT VIDEO LINKS FROM SEARCH
     title_output = []  # OUTPUT TITLE LINKS FROM SEARCH
 
-    for index in range(0, len(page_source) - 1, 1):
+
+    for index in range(0, len(page_source) - 1):
         element = page_source[index]
         element_next = page_source[index + 1]
         if (element[0:23] == 'data-sessionlink="itct=') and (element_next[0:7] == 'title="'):
@@ -53,7 +54,7 @@ def search(request):
 
     data = []
 
-    for index in range(0, len(link_output)):
+    for index in range(0, len(link_output)-1):
         # Replace
         title_output[index]=title_output[index].replace('&#39;', "")
         title_output[index] = title_output[index].replace('&quot;', '"')
