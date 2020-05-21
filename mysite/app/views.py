@@ -53,13 +53,16 @@ def search(request):
                 link_output += ['www.youtube.com' + element[6:len(element) - 1]]
 
     data = []
+    try:
+        for index in range(0, len(link_output)-1):
+            # Replace
+            title_output[index]=title_output[index].replace('&#39;', "")
+            title_output[index] = title_output[index].replace('&quot;', '"')
 
-    for index in range(0, len(link_output)-1):
-        # Replace
-        title_output[index]=title_output[index].replace('&#39;', "")
-        title_output[index] = title_output[index].replace('&quot;', '"')
-
-        link_and_title = [link_output[index], title_output[index][6:]]
+            link_and_title = [link_output[index], title_output[index][6:]]
+            data.append(link_and_title)
+    except:
+        # print("Ошибка, но работает. Не знаю почему, надо исправить")
         data.append(link_and_title)
 
     context = {"search_query": keyword,
