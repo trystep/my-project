@@ -78692,9 +78692,15 @@
 		<priority>0.8</priority>
 	</url>
     <url>
-		<loc>http://parf-vlog.ru/?search=лучший_парфюм</loc>
-		<lastmod>2020-05-18</lastmod>
-		<changefreq>weekly</changefreq>
-		<priority>0.8</priority>
-	</url>
+        <loc>http://parf-vlog.ru/?search=интернет_магазин_профессиональной_декоративной_косметики</loc>
+        <lastmod>2020-05-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>http://parf-vlog.ru/?search=набор_профессиональной_косметики</loc>
+        <lastmod>2020-05-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
 </urlset>
