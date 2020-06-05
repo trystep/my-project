@@ -10,14 +10,10 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 import os, sys
 
 # add the hellodjango project path into the sys.path
-sys.path.append("/home/django/my-project/mysite/")
+# sys.path.append("/home/django/my-project/mysite/")
 
 # add the virtualenv site-packages path to the sys.path
-sys.path.append("/home/django/env-my-project/lib/python3.8/site-packages/")
-
-# poiting to the project settings
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mysite.settings")
-
+# sys.path.append("/home/django/env-my-project/lib/python3.8/site-packages/")
 
 from django.core.wsgi import get_wsgi_application
 
