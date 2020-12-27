@@ -24,7 +24,6 @@ def search(request):
     link_output = []  # OUTPUT VIDEO LINKS FROM SEARCH
     title_output = []  # OUTPUT TITLE LINKS FROM SEARCH
 
-
     for index in range(0, len(page_source) - 1):
         element = page_source[index]
         element_next = page_source[index + 1]
@@ -54,9 +53,9 @@ def search(request):
 
     data = []
     try:
-        for index in range(0, len(link_output)-1):
+        for index in range(0, len(link_output) - 1):
             # Replace
-            title_output[index]=title_output[index].replace('&#39;', "")
+            title_output[index] = title_output[index].replace('&#39;', "")
             title_output[index] = title_output[index].replace('&quot;', '"')
 
             link_and_title = [link_output[index], title_output[index][6:]]
@@ -75,7 +74,7 @@ def post_detail(request, slug):
     """
     Вывод содержимого видео с YouTube на основе Embed-кода, полученного с GET-запроса в URL
     """
-    id=slug
+    id = slug
     RESPONSE = {
         'id': str,
         'title': str,
@@ -183,8 +182,9 @@ def post_detail(request, slug):
         return ({
             'error': 'Video with the ID {} does not exist'.format(id)
         })
+
     context = {"data": RESPONSE,
-               'embed':id}
+               'embed': id}
 
     try:
         scrape_video_data(id)
