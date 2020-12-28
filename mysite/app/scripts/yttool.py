@@ -434,6 +434,7 @@ class SearchReader:
 
     def recursesearch(self):
         resultlist, cont = self.getresults(getitem(self.cfg, ("xsrf_token",), "response"))
+        data = []
         while True:
             for item in resultlist:
                 if video := item.get("videoRenderer"):
@@ -446,14 +447,14 @@ class SearchReader:
                     # lengthText -> simpleText
                     # viewCountText -> simpleText
                     # ownerText -> runs
-                    print("%s - %s" % (vid, self.extractruns(title)))
+                    print([vid, self.extractruns(title)])
                 elif chan := item.get("channelRenderer"):
                     cid = getitem(chan, "channelId")
                     title = getitem(chan, "title", "simpleText")
                     # "videoCountText" -> runs
                     # subscriberCountText -> simpleText
                     # descriptionSnippet -> runs
-                    print("%s - %s" % (cid, title))
+                    print([cid, title])
 
             jstext = self.yt.getsearch(cont)
             js = json.loads(jstext)
@@ -865,10 +866,11 @@ def main():
                 lst.output()
 
 
-def detail_view():
-    class Args(NamedTuple):
-        debug = 0
+class Args(NamedTuple):
+    debug = 0
 
+
+def detail_view():
     args = Args()
     yt = Youtube(args)
     url = "https://www.youtube.com/watch?v=%s" % 'CSvFpBOe8eY'
@@ -877,5 +879,16 @@ def detail_view():
     return lst.output()
 
 
+def search_view():
+    args = Args()
+    yt = Youtube(args)
+    idvalue = 'how to'
+    url = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": idvalue})
+    cfg = yt.getpageinfo(url)
+    lst = SearchReader(args, yt, cfg)
+    return lst.recursesearch()
+
+
 if __name__ == '__main__':
-    print(detail_view())
+    # print(detail_view())
+    print(search_view())
