@@ -434,7 +434,6 @@ class SearchReader:
 
     def recursesearch(self):
         resultlist, cont = self.getresults(getitem(self.cfg, ("xsrf_token",), "response"))
-        data = []
         while True:
             for item in resultlist:
                 if video := item.get("videoRenderer"):
