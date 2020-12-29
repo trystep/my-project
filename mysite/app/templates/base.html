@@ -79,19 +79,8 @@
         <div class="container">
             {% block container %}
             <div class="row">
-                {% for url, title in data %}
-                <div class="col-md-4">
-                    <a href="/video/{{ url|slice:'24:' }}/?search={{ title }}">
-                        <div class="card mb-4 box-shadow">
-                            <img class="card-img-top"
-                                 src="https://i.ytimg.com/vi/{{ url|slice:'24:' }}/maxresdefault.jpg"
-                                 alt="{{ title }}">
-                            <div class="card-body">
-                                <p id="title_search" class="card-text">{{ title }}</p>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                {% for i in data %}
+                {{i}}
                 {% endfor %}
             </div>
             {% endblock %}
@@ -128,6 +117,7 @@
         trackLinks:true,
         accurateTrackBounce:true
    });
+
 
         </script>
         <noscript>
@@ -186,6 +176,7 @@ title=title.replace(/\_/g, " ");
 
 document.getElementById("title-page").innerHTML = title;
 document.getElementById("title-search").innerHTML = title;
+
 
 
 
