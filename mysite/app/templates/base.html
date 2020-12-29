@@ -79,8 +79,9 @@
         <div class="container">
             {% block container %}
             <div class="row">
-                {% for i in data %}
-                {{i}}
+                {% for i, j in data %}
+                {{i}}, {{j}}
+                <br>
                 {% endfor %}
             </div>
             {% endblock %}
