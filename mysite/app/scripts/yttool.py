@@ -434,7 +434,7 @@ class SearchReader:
 
     def recursesearch(self):
         resultlist, cont = self.getresults(getitem(self.cfg, ("xsrf_token",), "response"))
-        while True:
+        for i in range(1):
             for item in resultlist:
                 if video := item.get("videoRenderer"):
                     vid = getitem(video, "videoId")
@@ -453,7 +453,7 @@ class SearchReader:
                     # "videoCountText" -> runs
                     # subscriberCountText -> simpleText
                     # descriptionSnippet -> runs
-                    print([cid, title])
+                    # print([cid, title])
 
             jstext = self.yt.getsearch(cont)
             js = json.loads(jstext)
