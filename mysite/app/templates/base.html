@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
-    <title>Document</title>
+    <title>Video Clip Online</title>
 </head>
 <body>
 <div class="container-fluid top-nav fixed-div">
@@ -19,24 +19,15 @@
                 <span></span>
                 <span></span>
             </div>
-            <img src="{% static 'img/logo.png' %}" alt="ss" class="header-logo">
-            <a href="#" class="btn-search-toggle btn visible-xs"><i class="fa fa-search"></i></a>
+
+            <a href="/"><img src="{% static 'img/logo2.png' %}" alt="Video Clip Online" class="header-logo"></a>
         </div>
         <div class="col-lg-10 col-md-9 center-section">
-            <div class="search-modal">
-                <div class="search-section search-section-mobile">
-
-                    <input type="text" class="search-form" name="query" autocomplete="off" placeholder="Найти..."
-                           id="query">
-                    <button class="search-btn fa fa-search btn-search"></button>
-                </div>
-            </div>
-
             <div class="search-section">
-
-                <input type="text" class="search-form" name="query" autocomplete="off" placeholder="Найти..."
-                       id="query">
-                <button class="search-btn fa fa-search btn-search"></button>
+                <form class="" action="{% url 'search' %}" method="get">
+                    <input class="search-form" name="search" type="text" autocomplete="off"
+                           placeholder="Search...">
+                </form>
             </div>
             <div class="right-section-header">
             </div>
@@ -51,6 +42,11 @@
                     <div class="sb_title"></div>
                     <ul class="cat-list clearfix">
                         <li><a href="/category/music"><span>Music</span></a></li>
+                        <li><a href="/category/sport"><span>Sport</span></a></li>
+                        <li><a href="/category/games"><span>Games</span></a></li>
+                        <li><a href="/category/films"><span>Films</span></a></li>
+                        <li><a href="/category/news"><span>News</span></a></li>
+                        <li><a href="/category/clip"><span>Clips</span></a></li>
                         </li>
                     </ul>
             </div>

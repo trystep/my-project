@@ -4,16 +4,29 @@ import urllib.parse
 from bs4 import BeautifulSoup
 import requests
 from random import choice
-from .scripts.yttool import detail_view, search_view
+from .scripts.yttool import detail_view, search_view, Youtube, SearchReader
 
 
-def search(request):
+class Args(object):
+    debug = 0
+
+
+def search(request, slug=''):
     """
     Поиск по YouTube на запрос от пользователя сайта
     """
-    search_view()
-    data = search_view()
-    context = {"data": data,}
+    args = Args()
+    yt = Youtube(args)
+    keyword = slug or urllib.parse.quote(request.GET.get('search', ''))
+
+    if not keyword:
+        keyword = 'funny'
+    url = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": keyword})
+    cfg = yt.getpageinfo(url)
+    lst = SearchReader(args, yt, cfg)
+    data = lst.recursesearch()
+
+    context = {"data": data, }
     return render(request, 'base.html', context=context)
 
 

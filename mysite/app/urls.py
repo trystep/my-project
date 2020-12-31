@@ -4,6 +4,7 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     path('', views.search, name='search'),
+    path('category/<slug>', views.search, name='search'),
     path('video/<slug>/', views.post_detail, name='post_detail'),
     # Эта строка требуется для отображения карты сайта по адресу .../sitemap.xml
     path(
