@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render
 from urllib.request import urlopen
 import urllib.parse
@@ -5,6 +7,7 @@ from bs4 import BeautifulSoup
 import requests
 from random import choice
 from .scripts.yttool import detail_view, search_view, Youtube, SearchReader, DetailReader
+from RandomWordGenerator import RandomWord
 
 
 class Args(object):
@@ -13,19 +16,19 @@ class Args(object):
 
 def search(request, slug=''):
     """
-    Поиск по YouTube на запрос от пользователя сайта
+    Поиск по YouTube на запрос от пользователя сайта. По умолчанию - страница с рандомным словом в поиске
     """
     args = Args()
     yt = Youtube(args)
     keyword = slug or urllib.parse.quote(request.GET.get('search', ''))
-
+    WORDS = ("python", "jumble", "easy", "difficult", "answer", "xylophone")
+    random_word = random.choice(WORDS)
     if not keyword:
-        keyword = 'funny'
+        keyword = random_word
     url = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": keyword})
     cfg = yt.getpageinfo(url)
     lst = SearchReader(args, yt, cfg)
     data = lst.recursesearch()
-
     context = {"data": data, }
     return render(request, 'base.html', context=context)
 
