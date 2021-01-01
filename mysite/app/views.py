@@ -21,7 +21,8 @@ def search(request, slug=''):
     args = Args()
     yt = Youtube(args)
     keyword = slug or urllib.parse.quote(request.GET.get('search', ''))
-    WORDS = ("python", "jumble", "easy", "difficult", "answer", "xylophone")
+    WORDS = ("а","б","в","г","д","е","ё","ж","з","и","й","к","л","м","н","о",
+            "п","р","с","т","у","ф","х","ц","ч","ш","щ","ъ","ы","ь","э","ю","я")
     random_word = random.choice(WORDS)
     if not keyword:
         keyword = random_word
