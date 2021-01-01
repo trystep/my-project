@@ -1,88 +1,288 @@
 {% extends 'base.html' %}
 {% block title %}{{ data.title }}{% endblock %}
 {% block description %}{{ data.description }}{% endblock %}
-{% block title-search %}{% endblock %}
 {% block container %}
-<h1 class="jumbotron-heading text-center">{{ data.title }} | {{ data.uploader.name }}</h1>
-<hr>
-<div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ data.id }}?rel=0"
-            allowfullscreen></iframe>
-</div>
-<hr>
-<div class="row">
-    <div class="col-md-4 order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Информация о видео</span>
-        </h4>
-        <ul class="list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Дата загрузки</h6>
-                    <small class="text-muted">{{ data.upload_date }}</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Длительность</h6>
-                    <small class="text-muted">{{ data.duration }}</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Жанр</h6>
-                    <small class="text-muted">{{ data.genre }}</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Имя автора</h6>
-                    <small class="text-muted">{{ data.uploader.name }}</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Количество просмотров</h6>
-                    <small class="text-muted">{{ data.statistics.views }}</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Количество лайков</h6>
-                    <small class="text-muted">{{ data.statistics.likes }}</small>
-                </div>
-            </li>
-            <li class="list-group-item d-flex justify-content-between lh-condensed">
-                <div>
-                    <h6 class="my-0">Количество дизлайков</h6>
-                    <small class="text-muted">{{ data.statistics.dislikes }}</small>
-                </div>
-            </li>
-        </ul>
+<div class="container player-section">
+    <div class="row">
+        <div class="col-lg-9 col-md-8 col-sm-12 col-12">
+            <div class="embed-responsive embed-responsive-16by9">
 
-    </div>
-    <div class="col-md-12 order-md-1">
-        {% if data.description %}
-        <h4 class="mb-3">Описание к видео {{ data.title }}</h4>
-            <pre>{{ data.description }}</pre>
-        {% endif %}
-    </div>
-    <div class="col-md-8 order-md-1">
-            <h4>Фото из видео {{ data.title }}</h4>
-            <div class="row">
-                <div class="col-md-3 mb-3">
-                    <img src="https://i.ytimg.com/vi/{{ data.id }}/1.jpg" alt="{{ data.uploader.name }} - {{ data.title }}" class="thumbnail img-responsive">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="https://i.ytimg.com/vi/{{ data.id }}/2.jpg" alt="{{ data.uploader.name }} - {{ data.title }}" class="thumbnail img-responsive">
-                </div>
-                <div class="col-md-3 mb-3">
-                    <img src="https://i.ytimg.com/vi/{{ data.id }}/3.jpg" alt="{{ data.uploader.name }} - {{ data.title }}" class="thumbnail img-responsive">
-                </div>
-		<div class="col-md-3 mb-3">       
-           	    <img src="https://i.ytimg.com/vi/{{ data.id }}/hqdefault.jpg" alt="{{ data.uploader.name }} - {{ data.title }}" class="thumbnail img-responsive" width="120px" height="90px">      
-    		</div>
+                <iframe id="player" class="player embed-responsive-item" frameborder="0" allowfullscreen="1"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        title="YouTube video player" width="100%" height="100%"
+                        src="https://www.youtube.com/embed/{{ data.id }}?rel=0?enablejsapi=1&amp;origin=https%3A%2F%2Fkzclip.com&amp;modestbranding=0&amp;iv_load_policy=3&amp;playsinline=1&amp;autoplay=1&amp;rel=0&amp;color=white&amp;theme=dark&amp;showinfo=0&amp;autohide=1&amp;html5=1&amp;widgetid=1"></iframe>
             </div>
+            <div class="video-descr">
+                <div class="video-title"><h1>{{ data.title }}</h1>
+                </div>
+                <div class="video-chanel-info">
+                    <div class="chanel-logo"></div>
+                    <div class="chanel-description-block">
+                        <div class="video-chanel-subtitle">{{data.owner}}</div>
+
+                        <div class="subtitle-block">
+                            <div class="subtitle-btn-group">
+                                <a id="subscribeUser" class="btn btn-subscribe btn-primary" href="#"><span><i
+                                        class="fa fa-youtube-play"></i>Жазылу </span><i class="subscribCount">1,2 М</i></a>
+                                <div class="dropdown">
+                                    <button class="dbut btn btn-sm dropdown-toggle dowld" type="button"
+                                            id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-download"></i>
+                                        Жүктеу <span class="caret"></span></button>
+                                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1"
+                                        id="linkres">
+                                        <li>&nbsp;&nbsp;&nbsp;Жүктеу.....</li>
+                                    </ul>
+                                </div>
+                                <div class="replay hidden-xs" data-toggle="tooltip" title=""
+                                     data-original-title="Автоматты түрде ойнату: Өшіру."></div>
+
+                            </div>
+                            <div class="view-group"><span class="views-count">Просмотров: {{data.view_count}}</span>
+                                <div class="ratting-progress clearfix"><span style="width:94%;"></span></div>
+                                <div class="like-button-group">
+                                    <div class="like-dislike"><a class="btn-like" data-toggle="tooltip" title=""
+                                                                 data-original-title="Бұл маған ұнайды"><i></i><span
+                                            id="l_num">&nbsp;35 332</span></a></div>
+                                    <div class="like-dislike"><a class="btn-dislike" data-toggle="tooltip" title=""
+                                                                 data-original-title="Бұл маған ұнамайды"><i></i><span
+                                            id="disl_num">&nbsp;1 863</span></a></div>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="advert-section row">
+                <!--                <div class="advert-block col-lg-4  col-md-4 col-sm-4 col-12 col-lg-4 ">-->
+                <!--                    <img src="{img/money.webp" alt="" class="advert-img">-->
+                <!--                    <div class="advert-title"></div>-->
+                <!--                </div>-->
+
+
+                <div class="decription-video-block">
+                    <div class="decription-video-block-nav">
+                        <ul class="nav-tabs">
+                            <script src="https://yastatic.net/share2/share.js"></script>
+                            <div class="ya-share2" data-curtain data-shape="round"
+                                 data-services="messenger,vkontakte,facebook,odnoklassniki,telegram,twitter,viber,
+                                 whatsapp,moimir,skype,tumblr,evernote,linkedin,lj,blogger,delicious,digg,reddit,pocket,
+                                 qzone,renren,sinaWeibo,surfingbird,tencentWeibo"></div>
+                        </ul>
+                        <div class="decription-video-block-nav-text">
+                            <li class="vdesc">
+                                {% autoescape off %}
+                                {{data.description}}
+                                {% endautoescape %}
+                            </li>
+                            <div class="decription-rubrick"><img src="img/rubrick.jpg"><a href="#">Спорт</a></div>
+                            <div class="decription-video-comentCount"><span>Пікірлер • 70</span><i id="sw_comm"
+                                                                                                   class="fa fa-caret-down fa-2x mob_hide"
+                                                                                                   style=""></i></div>
+                            <div class="comment-section">
+                                <div class="comments-block">
+                                    <div class="comments-block-main">
+                                        <img src="img/coment-icon.jpg" alt="">
+                                        <div class="comments-block-text">
+                                            <div class="comments-block-title">
+                                                <a class="#">Sawyer</a> <span class="comment-day-ago">5 күн бұрын</span>
+                                                <sup class="com_like">+272</sup>
+                                                <div class="comments-block-content">
+                                                    Ищи наши бои здесь 1wphc.top/bets/custom/110 и успей воспользоваться
+                                                    уникальным промокодом «HARD», чтобы получить +200% к первому
+                                                    пополнению. Теперь мы знаем, чем ты займешься этим вечером!
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comments-block-sub-section">
+                                        <div class="comments-block-sub">
+                                            <img src="img/coment-icon.jpg" alt="">
+                                            <div class="comments-block-text">
+                                                <div class="comments-block-title">
+                                                    <a class="#">Sawyer</a> <span
+                                                        class="comment-day-ago">5 күн бұрын</span> <sup
+                                                        class="com_like">+272</sup>
+                                                </div>
+                                                <div class="comments-block-content">
+                                                    Ищи наши бои здесь 1wphc.top/bets/custom/110 и успей воспользоваться
+                                                    уникальным промокодом «HARD», чтобы получить +200% к первому
+                                                    пополнению. Теперь мы знаем, чем ты займешься этим вечером!
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comments-block">
+                                    <div class="comments-block-main">
+                                        <img src="img/coment-icon.jpg" alt="">
+                                        <div class="comments-block-text">
+                                            <div class="comments-block-title">
+                                                <a class="#">Sawyer</a> <span class="comment-day-ago">5 күн бұрын</span>
+                                                <sup class="com_like">+272</sup>
+                                                <div class="comments-block-content">
+                                                    Ищи наши бои здесь 1wphc.top/bets/custom/110 и успей воспользоваться
+                                                    уникальным промокодом «HARD», чтобы получить +200% к первому
+                                                    пополнению. Теперь мы знаем, чем ты займешься этим вечером!
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="comments-block">
+                                    <div class="comments-block-main">
+                                        <img src="img/coment-icon.jpg" alt="">
+                                        <div class="comments-block-text">
+                                            <div class="comments-block-title">
+                                                <a class="#">Sawyer</a> <span class="comment-day-ago">5 күн бұрын</span>
+                                                <sup class="com_like">+272</sup>
+                                                <div class="comments-block-content">
+                                                    Ищи наши бои здесь 1wphc.top/bets/custom/110 и успей воспользоваться
+                                                    уникальным промокодом «HARD», чтобы получить +200% к первому
+                                                    пополнению. Теперь мы знаем, чем ты займешься этим вечером!
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="comments-block">
+                                    <div class="comments-block-main">
+                                        <img src="img/coment-icon.jpg" alt="">
+                                        <div class="comments-block-text">
+                                            <div class="comments-block-title">
+                                                <a class="#">Sawyer</a> <span class="comment-day-ago">5 күн бұрын</span>
+                                                <sup class="com_like">+272</sup>
+                                                <div class="comments-block-content">
+                                                    Ищи наши бои здесь 1wphc.top/bets/custom/110 и успей воспользоваться
+                                                    уникальным промокодом «HARD», чтобы получить +200% к первому
+                                                    пополнению. Теперь мы знаем, чем ты займешься этим вечером!
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="comments-block">
+                                    <div class="comments-block-main">
+                                        <img src="img/coment-icon.jpg" alt="">
+                                        <div class="comments-block-text">
+                                            <div class="comments-block-title">
+                                                <a class="#">Sawyer</a> <span class="comment-day-ago">5 күн бұрын</span>
+                                                <sup class="com_like">+272</sup>
+                                                <div class="comments-block-content">
+                                                    Ищи наши бои здесь 1wphc.top/bets/custom/110 и успей воспользоваться
+                                                    уникальным промокодом «HARD», чтобы получить +200% к первому
+                                                    пополнению. Теперь мы знаем, чем ты займешься этим вечером!
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+            <div class="advert-section">
+                <div class="advert-block">
+                    <img src="img/money.webp" alt="" class="advert-img">
+                    <div class="advert-title">Заработать кучу денег еще никогда не было так просто</div>
+                </div>
+                <div class="advert-block">
+                    <img src="img/money.webp" alt="" class="advert-img">
+                    <div class="advert-title">Заработать кучу денег еще никогда не было так просто</div>
+                </div>
+            </div>
+            <div class="next-videos-section">
+                <div class="next-videos-nav">
+                    <div class="next-videos-nav-text">Келесі</div>
+                    <div class="next-videos-nav-mode"><span>Автоматты ойнату</span>
+                        <i class="fa fa-info-circle hidden-xs" data-toggle="tooltip" title=""
+                           data-original-title="Автоматты ойнату қосылғанда, ұсынылатын бейне автоматты түрде ойнатылады."></i>
+                        <label class="switch"><input id="pn" type="checkbox" checked="checked">
+                            <div class="slider round"></div>
+                        </label>
+                    </div>
+                </div>
+                <div class="next-videos-container row">
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
+                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
+                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
+                        <p class="next-videos-blocks_chanel">вДудь</p>
+                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
+
+                    </div>
+                </div>
+                <div class="next-videos-container row">
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
+                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
+                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
+                        <p class="next-videos-blocks_chanel">вДудь</p>
+                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
+
+                    </div>
+                </div>
+
+                <div class="next-videos-container row">
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
+                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
+                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
+                        <p class="next-videos-blocks_chanel">вДудь</p>
+                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
+
+                    </div>
+                </div>
+
+                <div class="next-videos-container row">
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
+                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
+                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
+                        <p class="next-videos-blocks_chanel">вДудь</p>
+                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
+
+                    </div>
+                </div>
+
+                <div class="next-videos-container row">
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
+                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
+                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
+                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
+                        <p class="next-videos-blocks_chanel">вДудь</p>
+                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
+
+
 </div>
 {% endblock %}
+

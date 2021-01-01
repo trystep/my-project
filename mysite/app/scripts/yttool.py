@@ -890,5 +890,5 @@ def search_view():
 
 
 if __name__ == '__main__':
-    # print(detail_view())
-    print(search_view())
+    print(detail_view())
+    # print(search_view())

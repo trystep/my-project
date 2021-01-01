@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
-    <title>Video Clip Online</title>
+    <title>{% block title %}Video Clip Online{% endblock %}</title>
 </head>
 <body>
 <div class="container-fluid top-nav fixed-div">
@@ -64,6 +64,8 @@
     </aside>
     <!--end navbar section -->
 </div>
+        {% block container %}
+
 <div class="container-fluid bottom-nav">
     <div class="row submenu justify-content-center">
         <div class="submenu-items"><h1 class="video-section-title">VIDEO ONLINE</h1>
@@ -84,8 +86,11 @@
             </div>
         </div>
         {% endfor %}
+
     </div>
 </div>
+        {% endblock %}
+
 <footer>
     <div class="container-fluid">
         <div class="row footer-logo align-items-center justify-content-between">
