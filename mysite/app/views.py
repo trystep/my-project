@@ -21,8 +21,8 @@ def search(request, slug=''):
     args = Args()
     yt = Youtube(args)
     keyword = slug or urllib.parse.quote(request.GET.get('search', ''))
-    WORDS = ("а","б","в","г","д","е","ё","ж","з","и","й","к","л","м","н","о",
-            "п","р","с","т","у","ф","х","ц","ч","ш","щ","ъ","ы","ь","э","ю","я")
+    word_file = "/home/singleton/my_folder/pet-projects/my-project/mysite/app/scripts/keywords.csv"
+    WORDS = open(word_file).read().splitlines()
     random_word = random.choice(WORDS)
     if not keyword:
         keyword = random_word
