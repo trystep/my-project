@@ -322,7 +322,12 @@ class CommentReader:
             print(r.get('text'), end="")
         print()
 
+    def gettextrun(self, runs):
+        for r in runs:
+            return r.get('text')
+
     def recursecomments(self, cc=None, level=0):
+        data = []
         if not cc:
             cc = self.contclick
         while cc:
@@ -337,10 +342,14 @@ class CommentReader:
             cmtlist, cc = self.extractcomments(js)
 
             for author, runs, subcc in cmtlist:
-                print("---" * (level + 1) + ">", author)
-                self.printtextrun(runs)
-                if subcc:
-                    self.recursecomments(subcc, level + 1)
+                # print("---" * (level + 1) + ">", author)
+                # self.printtextrun(runs)
+                data.append([author, self.gettextrun(runs)])
+                # if subcc:
+                #     self.recursecomments(subcc, level + 1)
+            return data
+
+
 
     def getcontinuation(self, p):
         p = getitem(p, "continuations", 0, "nextContinuationData")
@@ -889,6 +898,16 @@ def search_view():
     return lst.recursesearch()
 
 
+def comment_view():
+    args = Args()
+    yt = Youtube(args)
+    url = "https://www.youtube.com/watch?v=%s" % 'CSvFpBOe8eY'
+    cfg = yt.getpageinfo(url)
+    lst = CommentReader(args, yt, cfg)
+    return lst.recursecomments()
+
+
 if __name__ == '__main__':
-    print(detail_view())
+    # print(detail_view())
     # print(search_view())
+    print(comment_view())

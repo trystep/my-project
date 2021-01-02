@@ -6,7 +6,7 @@ import urllib.parse
 from bs4 import BeautifulSoup
 import requests
 from random import choice
-from .scripts.yttool import detail_view, search_view, Youtube, SearchReader, DetailReader
+from .scripts.yttool import detail_view, search_view, Youtube, SearchReader, DetailReader, CommentReader
 from RandomWordGenerator import RandomWord
 
 
@@ -56,7 +56,10 @@ def post_detail(request, slug):
     lst = DetailReader(args, yt, cfg)
     data = lst.output()
 
-    context = {"data": data, }
+    comment = CommentReader(args, yt, cfg)
+    comments = comment.recursecomments()
+
+    context = {"data": data, "comments": comments}
     return render(request, 'post_detail.html', context=context)
 
 
