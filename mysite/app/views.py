@@ -18,7 +18,7 @@ def search(request, slug=''):
     args = Args()
     yt = Youtube(args)
     keyword = slug or urllib.parse.quote(request.GET.get('search', ''))
-    word_file = "/home/singleton/my_folder/pet-projects/my-project/mysite/app/scripts/keywords.csv"
+    word_file = "/home/django/my-project/mysite/app/scripts/keywords.csv"
     WORDS = open(word_file).read().splitlines()
     random_word = random.choice(WORDS)
     if not keyword:
