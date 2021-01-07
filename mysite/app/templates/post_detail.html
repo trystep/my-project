@@ -22,30 +22,18 @@
 
                         <div class="subtitle-block">
                             <div class="subtitle-btn-group">
-                                <a id="subscribeUser" class="btn btn-subscribe btn-primary" href="#"><span><i
-                                        class="fa fa-youtube-play"></i>Жазылу </span><i class="subscribCount">1,2 М</i></a>
                                 <div class="dropdown">
-                                    <button class="dbut btn btn-sm dropdown-toggle dowld" type="button"
-                                            id="dropdownMenu1" data-toggle="dropdown"><i class="fa fa-download"></i>
-                                        Жүктеу <span class="caret"></span></button>
-                                    <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1"
-                                        id="linkres">
-                                        <li>&nbsp;&nbsp;&nbsp;Жүктеу.....</li>
-                                    </ul>
                                 </div>
-                                <div class="replay hidden-xs" data-toggle="tooltip" title=""
-                                     data-original-title="Автоматты түрде ойнату: Өшіру."></div>
-
                             </div>
                             <div class="view-group"><span class="views-count">Просмотров: {{data.view_count}}</span>
                                 <div class="ratting-progress clearfix"><span style="width:94%;"></span></div>
                                 <div class="like-button-group">
                                     <div class="like-dislike"><a class="btn-like" data-toggle="tooltip" title=""
-                                                                 data-original-title="Бұл маған ұнайды"><i></i><span
-                                            id="l_num">&nbsp;35 332</span></a></div>
+                                                                 data-original-title="Like"><i></i><span
+                                            id="l_num">Нравится / Не нравится: </span></a></div>
                                     <div class="like-dislike"><a class="btn-dislike" data-toggle="tooltip" title=""
-                                                                 data-original-title="Бұл маған ұнамайды"><i></i><span
-                                            id="disl_num">&nbsp;1 863</span></a></div>
+                                                                 data-original-title="Dislike"><i></i><span
+                                            id="disl_num">{{data.sentiment}}</span></a></div>
                                 </div>
                             </div>
 
@@ -58,10 +46,10 @@
 
             </div>
             <div class="advert-section row">
-                <!--                <div class="advert-block col-lg-4  col-md-4 col-sm-4 col-12 col-lg-4 ">-->
-                <!--                    <img src="{img/money.webp" alt="" class="advert-img">-->
-                <!--                    <div class="advert-title"></div>-->
-                <!--                </div>-->
+                <div class="advert-block col-lg-4  col-md-4 col-sm-4 col-12 col-lg-4 ">
+                    <img src="img/money.webp" alt="" class="advert-img">
+                    <div class="advert-title"></div>
+                </div>
 
 
                 <div class="decription-video-block">
@@ -76,18 +64,20 @@
                         <div class="decription-video-block-nav-text">
                             <li class="vdesc">
                                 {% autoescape off %}
-                                {{data.description}}
-                                {% endautoescape %}
+                            <li>fdsfds</li>
+                            {% endautoescape %}
+                            {{data.description}}
                             </li>
                             <div class="decription-rubrick"></div>
-                            <div class="decription-video-comentCount"><span>Комментарии</span><i id="sw_comm"
-                                                                                                 class="fa fa-caret-down fa-2x mob_hide"
-                                                                                                 style=""></i></div>
+                            <div class="decription-video-comentCount"><span></span><i id="sw_comm"
+                                                                                      class="fa fa-caret-down fa-2x mob_hide"
+                                                                                      style=""></i></div>
                             <div class="comment-section">
                                 {% for author, comment in comments %}
                                 <div class="comments-block">
                                     <div class="comments-block-main">
-                                        <img src="img/coment-icon.jpg" alt="">
+                                        {% load static %}
+                                        <img src="{% static 'img/avatar.jpg' %}" alt="">
                                         <div class="comments-block-text">
                                             <div class="comments-block-title">
                                                 <a class="#">{{author}}</a> <span class="comment-day-ago"></span>
@@ -112,75 +102,26 @@
         <div class="col-lg-3 col-md-4 col-sm-12 col-12">
             <div class="advert-section">
                 <div class="advert-block">
-                    <img src="img/money.webp" alt="" class="advert-img">
-                    <div class="advert-title">Заработать кучу денег еще никогда не было так просто</div>
+                    <div class="advert-title"></div>
                 </div>
                 <div class="advert-block">
-                    <img src="img/money.webp" alt="" class="advert-img">
-                    <div class="advert-title">Заработать кучу денег еще никогда не было так просто</div>
+                    <div class="advert-title"></div>
                 </div>
             </div>
             <div class="next-videos-section">
                 <div class="next-videos-nav">
-                    <div class="next-videos-nav-text">Келесі</div>
-                    <div class="next-videos-nav-mode"><span>Автоматты ойнату</span>
-                        <i class="fa fa-info-circle hidden-xs" data-toggle="tooltip" title=""
-                           data-original-title="Автоматты ойнату қосылғанда, ұсынылатын бейне автоматты түрде ойнатылады."></i>
-                        <label class="switch"><input id="pn" type="checkbox" checked="checked">
-                            <div class="slider round"></div>
-                        </label>
+                    <div class="next-videos-nav-text"></div>
+                    <div class="next-videos-nav-mode"><span></span>
                     </div>
                 </div>
                 <div class="next-videos-container row">
                     <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
-                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
+                            class="next-videos-blocks_link" href="/video/{{data.id}}"><img
+                            src="http://i.ytimg.com/vi/{{data.id}}/mqdefault.jpg"></a></div>
                     <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
-                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
-                        <p class="next-videos-blocks_chanel">вДудь</p>
-                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
-
-                    </div>
-                </div>
-                <div class="next-videos-container row">
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
-                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
-                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
-                        <p class="next-videos-blocks_chanel">вДудь</p>
-                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
-
-                    </div>
-                </div>
-
-                <div class="next-videos-container row">
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
-                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
-                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
-                        <p class="next-videos-blocks_chanel">вДудь</p>
-                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
-
-                    </div>
-                </div>
-
-                <div class="next-videos-container row">
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
-                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
-                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
-                        <p class="next-videos-blocks_chanel">вДудь</p>
-                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
-
-                    </div>
-                </div>
-
-                <div class="next-videos-container row">
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
-                            class="next-videos-blocks_link"><img src="img/next-videos-youtube.jpg"></a></div>
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
-                            class="next-videos-blocks_link_tile">Марков - как живет русская провинция / вДудь</a>
-                        <p class="next-videos-blocks_chanel">вДудь</p>
-                        <p class="next-videos-blocks_viewCount">Рет қаралды 12 МЛН</p>
+                            class="next-videos-blocks_link_tile">{{data.title}}</a>
+                        <p class="next-videos-blocks_chanel">{{data.owner}}</p>
+                        <p class="next-videos-blocks_viewCount">{{data.view_count}}</p>
 
                     </div>
                 </div>

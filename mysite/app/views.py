@@ -1,13 +1,10 @@
 import random
-
 from django.shortcuts import render
-from urllib.request import urlopen
 import urllib.parse
-from bs4 import BeautifulSoup
-import requests
-from random import choice
-from .scripts.yttool import detail_view, search_view, Youtube, SearchReader, DetailReader, CommentReader
-from RandomWordGenerator import RandomWord
+
+from django.template import Context
+
+from .scripts.yttool import Youtube, SearchReader, DetailReader, CommentReader
 
 
 class Args(object):
@@ -58,8 +55,7 @@ def post_detail(request, slug):
 
     comment = CommentReader(args, yt, cfg)
     comments = comment.recursecomments()
-
-    context = {"data": data, "comments": comments}
+    context = {"data": data, "comments": comments,}
     return render(request, 'post_detail.html', context=context)
 
 

@@ -908,6 +908,8 @@ def comment_view():
 
 
 if __name__ == '__main__':
+    a=detail_view()
+    print(a['description'])
     # print(detail_view())
     # print(search_view())
-    print(comment_view())
+    # print(comment_view())
