@@ -45,9 +45,12 @@ def getitembymember(a, member):
     """
     Get the first item from 'a' which has an element named 'member'
     """
-    for item in a:
-        if member in item:
-            return item
+    try:
+        for item in a:
+            if member in item:
+                return item
+    except:
+        return a
 
 
 def getitem(d, *path):
