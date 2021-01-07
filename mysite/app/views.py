@@ -35,27 +35,18 @@ def post_detail(request, slug):
     """
     Вывод содержимого видео с YouTube
     """
-    RESPONSE = {'id': str,
-                'title': str,
-                'owner': str,
-                'view_count': str,
-                'duration': str,
-                'sentiment': str,
-                'publish_date': str,
-                'upload_date': str,
-                'description': str,
-                }
-
     args = Args()
     yt = Youtube(args)
     url = "https://www.youtube.com/watch?v=%s" % slug
     cfg = yt.getpageinfo(url)
     lst = DetailReader(args, yt, cfg)
     data = lst.output()
-
+    desc=data['description']
+    desc=desc.replace("\n", '<br>')
     comment = CommentReader(args, yt, cfg)
     comments = comment.recursecomments()
-    context = {"data": data, "comments": comments,}
+
+    context = {"data": data, "comments": comments,'desc':desc}
     return render(request, 'post_detail.html', context=context)
 
 
