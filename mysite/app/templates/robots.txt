@@ -2,5 +2,5 @@ User-agent: *
 Allow: /
 
 Crawl-delay: 2
-Host: clipic.ru
-Sitemap: http://clipic.ru/sitemap.xml
+Host: www.clipic.ru
+Sitemap: https://www.clipic.ru/sitemap.xml

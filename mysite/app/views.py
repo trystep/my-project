@@ -45,7 +45,10 @@ def post_detail(request, slug):
     lst = DetailReader(args, yt, cfg)
     data = lst.output()
     desc=data['description']
-    desc=desc.replace("\n", '<br>')
+    try:
+        desc=desc.replace("\n", '<br>')
+    except:
+        desc = data['description']
     comment = CommentReader(args, yt, cfg)
     comments = comment.recursecomments()
 
