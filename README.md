@@ -1,6 +1,6 @@
 # my first avanture
 
-Install
+<h1>Install</h1>
 
 apt install python3.8-venv
 
