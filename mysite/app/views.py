@@ -48,7 +48,7 @@ def post_detail(request, slug):
     try:
         desc=desc.replace("\n", '<br>')
     except:
-        desc = data['description']
+        desc = ''
     comment = CommentReader(args, yt, cfg)
     comments = comment.recursecomments()
 
