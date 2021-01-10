@@ -22,7 +22,7 @@ def search(request, slug=''):
         word_file = "/home/django/my-project/mysite/app/scripts/keywords.csv"
         WORDS = open(word_file).read().splitlines()
     except:
-        WORDS=['lol', 'pop', 'news']
+        WORDS = ['lol', 'pop', 'news']
     random_word = random.choice(WORDS)
     if not keyword:
         keyword = random_word
@@ -44,16 +44,32 @@ def post_detail(request, slug):
     cfg = yt.getpageinfo(url)
     lst = DetailReader(args, yt, cfg)
     data = lst.output()
-    desc=data['description']
+    desc = data['description']
     try:
-        desc=desc.replace("\n", '<br>')
+        desc = desc.replace("\n", '<br>')
     except:
         desc = ''
     comment = CommentReader(args, yt, cfg)
     comments = comment.recursecomments()
 
-    context = {"data": data, "comments": comments,'desc':desc}
+    context = {"data": data, "comments": comments, 'desc': desc}
     return render(request, 'post_detail.html', context=context)
+
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def privacy(request):
+    return render(request, 'privacy.html')
+
+
+def terms(request):
+    return render(request, 'terms.html')
+
+
+def contacts(request):
+    return render(request, 'contacts.html')
 
 
 def sitemap(request):

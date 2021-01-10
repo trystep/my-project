@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{% block description %}{% endblock %}">
-    <meta name="yandex-verification" content="d65a9a1dfdf736a5" />
+    <meta name="yandex-verification" content="d65a9a1dfdf736a5"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% load static %}
     <link rel="stylesheet" href="{% static 'style.css' %}"/>
-    <title>{% block title %}Video Clip Online{% endblock %}</title>
+    <title>{% block title %}Поиск и просмотр популярных видеороликов в интернете{% endblock %}</title>
 </head>
 <body>
 <div class="container-fluid top-nav fixed-div">
@@ -28,7 +28,7 @@
             <div class="search-section">
                 <form class="" action="{% url 'search' %}" method="get">
                     <input class="search-form" name="search" type="text" autocomplete="off"
-                           placeholder="Search...">
+                           placeholder="Найти...">
                 </form>
             </div>
             <div class="right-section-header">
@@ -40,17 +40,37 @@
         <div class="scrollable-area-wrapper noscroll-vertical sidebm sidebm">
             <div class="sidebar-holder scrollable-area sidebm_d">
                 <ul class="min-list">
-                    <li></li>
-                    <div class="sb_title"></div>
-                    <ul class="cat-list clearfix">
-                        <li><a href="/category/music"><span>Music</span></a></li>
-                        <li><a href="/category/sport"><span>Sport</span></a></li>
-                        <li><a href="/category/games"><span>Games</span></a></li>
-                        <li><a href="/category/films"><span>Films</span></a></li>
-                        <li><a href="/category/news"><span>News</span></a></li>
-                        <li><a href="/category/clip"><span>Clips</span></a></li>
-                        </li>
-                    </ul>
+                    <li><a href="/"><i class="fa fa-home"></i>Главная</a></li>
+                    <li><a href="/category/trending"><i class="fa fa-fire"></i>В тренде</a></li>
+                    <li><a href="/category/livetv"><i class="fa fa-youtube-play"></i>Прямой эфир</a></li>
+                    <li><a href="/category/liked"><i class="fa fa-thumbs-o-up"></i>Любимые видео</a></li>
+                </ul>
+                <div class="sb_title">Лучшее</div>
+                <ul class="cat-list clearfix">
+                    <li><a href="/category/films"><img src="{% static '/img/ico/1.jpg' %}" class="img-responsive"
+                                                       alt="Кино и анимация"><span>Кино</span></a></li>
+                    <li><a href="/category/auto"><img src="{% static '/img/ico/2.jpg' %}" class="img-responsive"
+                                                      alt="Автомобили и транспорт"><span>Автомобили</span></a></li>
+                    <li><a href="/category/music"><img src="{% static '/img/ico/10.jpg' %}" class="img-responsive"
+                                                       alt="Музыка"><span>Музыка</span></a></li>
+                    <li><a href="/category/animals"><img src="{% static '/img/ico/15.jpg' %}" class="img-responsive"
+                                                         alt="Животные"><span>Животные</span></a></li>
+                    <li><a href="/category/sport"><img src="{% static '/img/ico/17.jpg' %}" class="img-responsive"
+                                                       alt="Спорт"><span>Спорт</span></a></li>
+                    <li><a href="/category/games"><img src="{% static '/img/ico/20.jpg' %}" class="img-responsive"
+                                                       alt="Игры"><span>Игры</span></a></li>
+                    <li><a href="/category/comedy"><img src="{% static '/img/ico/23.jpg' %}" class="img-responsive"
+                                                        alt="Комедия"><span>Комедия</span></a></li>
+                    <li><a href="/category/entertainment"><img src="{% static '/img/ico/24.jpg' %}"
+                                                               class="img-responsive"
+                                                               alt="Развлечения"><span>Развлечения</span></a></li>
+                    <li><a href="/category/style"><img src="{% static '/img/ico/26.jpg' %}" class="img-responsive"
+                                                       alt="Стиль"><span>Стиль</span></a></li>
+                    <li><a href="/category/science"><img src="{% static '/img/ico/28.jpg' %}" class="img-responsive"
+                                                         alt="Наука и технология"><span>Наука и технология</span></a>
+                    </li>
+                </ul>
+                <p>&nbsp;</p>
             </div>
             <div class="vscrollbar" style="">
                 <div class="vscroll-up btn-disabled"></div>
@@ -66,15 +86,17 @@
     </aside>
     <!--end navbar section -->
 </div>
-        {% block container %}
+{% block container %}
 
 <div class="container-fluid bottom-nav">
     <div class="row submenu justify-content-center">
-        <div class="submenu-items"><h1 class="video-section-title">VIDEO ONLINE</h1>
-        </div>
+        <div class="submenu-items"><a class="active" href="/">Главная</a></div>
+        <div class="submenu-items"><a class="" href="/category/trending">В тренде</a></div>
+        <div class="submenu-items"><a class="" href="/category/livetv">Прямой эфир</a></div>
     </div>
 </div>
 <div class="container video-section">
+    <h1 class="video-section-title">Поиск и просмотр популярных видеороликов в интернете</h1>
     <div class="row justify-content-center ">
         {% for id, title in data %}
         <div class="col-lg-2  col-md-4 col-sm-6 video-columns">
@@ -91,7 +113,7 @@
 
     </div>
 </div>
-        {% endblock %}
+{% endblock %}
 
 <footer>
     <div class="container-fluid">
@@ -101,8 +123,10 @@
         </div>
     </div>
     <ul class="footer-links container-fluid">
-        <li></li>
-        <li class="copyright"></li>
+        <li><a href="/about">О сайте</a></li>
+        <li><a href="/terms">Условия использования</a></li>
+        <li><a href="/privacy">Политика конфиденциальности</a></li>
+        <li><a href="/contacts">Контакты</a></li>
     </ul>
 </footer>
 {% block extrahead %}
@@ -110,7 +134,7 @@
         integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script src="{% static 'js/main.js' %}"></script>
 <!-- Yandex.Metrika counter -->
-<script type="text/javascript" >
+<script type="text/javascript">
    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
    m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
@@ -121,8 +145,11 @@
         accurateTrackBounce:true,
         webvisor:true
    });
+
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/71031652" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/71031652" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
 <!-- /Yandex.Metrika counter -->
 {% endblock extrahead %}
 </body>

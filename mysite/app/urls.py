@@ -6,6 +6,10 @@ urlpatterns = [
     path('', views.search, name='search'),
     path('category/<slug>', views.search, name='search'),
     path('video/<slug>/', views.post_detail, name='post_detail'),
+    path('about', views.about),
+    path('privacy', views.privacy),
+    path('terms', views.terms),
+    path('contacts', views.contacts),
     # Эта строка требуется для отображения карты сайта по адресу .../sitemap.xml
     path(
         "sitemap.xml",
