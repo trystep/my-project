@@ -22,7 +22,7 @@ header{
     }
   .visible-xs{
       display: block;
-  }  
+  }
 
   #sw_comm{
       display: none;
@@ -30,7 +30,7 @@ header{
 footer{
  padding-top: 15px;
  background: #fff;
- }   
+ }
  .footer-logo {
      padding-bottom: 15px;
  }
@@ -41,7 +41,7 @@ display: flex;
 -webkit-box-align: center;
     -ms-flex-align: center;
         align-items: center;
-}   
+}
 header::before {
         content: '';
         width: 100%;
@@ -125,7 +125,7 @@ height: 30px;
     height: 2px;
     background: #B8B8B8;
     margin: 0 0 2px;
-    
+
 }
 #menu-icon:hover span{
     background: #606060;
@@ -213,7 +213,7 @@ border-bottom: 3px solid transparent;
 .active{
     font-weight: 600;
     color: #000;
-    border-bottom: 3px solid #cc181e; 
+    border-bottom: 3px solid #cc181e;
     padding-bottom: 10px;
 }
 body{
@@ -265,7 +265,7 @@ body{
 }
 .video-prev{
     width: 100%;
-    
+
 }
 .video-link{
     position: relative;
@@ -399,13 +399,13 @@ font-weight: 400;
     vertical-align: middle;
     width: 55px;
     height: 55px;
-    margin: 0 10px 0 0;    
+    margin: 0 10px 0 0;
 }
 .chanel-logo {
     display: inline-block;
 }
 .video-chanel-subtitle{
-   display: block; 
+   display: block;
 }
 .btn-subscribe {
     margin-top: 10px;
@@ -421,9 +421,9 @@ font-weight: 400;
     padding-left: 10px;
     color: #fff;
     padding-right: 10px;
-} 
+}
 .chanel-description-block{
-    display: inline-block;   
+    display: inline-block;
     width: 100%;
 }
 .subscribCount {
@@ -528,9 +528,9 @@ padding-right: 5px;
    display: flex;
    -webkit-box-align: center;
        -ms-flex-align: center;
-           align-items: center; 
-   -webkit-box-pack: justify; 
-       -ms-flex-pack: justify; 
+           align-items: center;
+   -webkit-box-pack: justify;
+       -ms-flex-pack: justify;
            justify-content: space-between;
    padding-right: 10px;
    padding-left: 0px;
@@ -677,7 +677,7 @@ input:checked+.slider:before {
 .next-videos-blocks_viewCount{
     font-size: 11px;
     color: #606060;
-    margin-bottom: 0px;  
+    margin-bottom: 0px;
 }
 .btn-like span{
     color: #606060;
@@ -777,11 +777,11 @@ color: #333;
     text-decoration: none;
 }
 .nav-tabs{
-    
+
     display: -webkit-box;
-    
+
     display: -ms-flexbox;
-    
+
     display: flex;
     padding-top: 10px;
     border-top: 1px solid #dee2e6;
@@ -819,11 +819,11 @@ display: none;
     text-transform: uppercase;
 }
 .comments-block-title{
-    color: #128ee9; 
+    color: #128ee9;
 }
 .comments-block-title a{
     font-weight: 500;
-    color: #128ee9; 
+    color: #128ee9;
     font-size: 13px;
 }
 .comments-block-title  .comment-day-ago{
@@ -851,7 +851,7 @@ display: none;
 .comments-block-content{
     font-size: 14px;
     line-height: 20px;
-    color: #2d2d2d;   
+    color: #2d2d2d;
 }
 .comments-block-sub{
     padding-left: 50px;
@@ -947,7 +947,7 @@ display: none;
     -ms-flex: 0 0 67.333333%;
     -webkit-box-flex: 0;
             flex: 0 0 67.333333%;
-    max-width: 67.333333%;   
+    max-width: 67.333333%;
    }
 }
 
@@ -958,7 +958,7 @@ display: none;
         display: flex !important;
     }
     .search-modal .search-form{
-      width: 80%; 
+      width: 80%;
     }
     .search-modal .search-btn{
         width: 17%;
@@ -975,7 +975,7 @@ display: none;
         max-width: 96%;
     }
     .advert-section{
-        display: none;
+        /*display: none;*/
     }
     #disl_num{
 display: inline-block;
@@ -1009,7 +1009,7 @@ margin-top: 7px;
         margin-right: 20px;
     }
     .comment-section{
-        display: none;
+        /*display: none;*/
     }
    .logo-block .visible-xs{
     display: block;
@@ -1032,8 +1032,8 @@ margin-top: 7px;
         -ms-flex: 0 0 67.333333%;
         -webkit-box-flex: 0;
                 flex: 0 0 67.333333%;
-        max-width: 67.333333%;   
-       } 
+        max-width: 67.333333%;
+       }
 }
 @media (max-width: 576px){
     .player-section .col-lg-3 {
@@ -1071,17 +1071,17 @@ margin-top: 7px;
         -ms-flex: 0 0 25.333333%;
         -webkit-box-flex: 0;
                 flex: 0 0 25.333333%;
-        max-width: 25.333333%;   
+        max-width: 25.333333%;
        }
        .video-link{
            width: 100%;
-       } 
+       }
 
 }
 @media (max-width: 360px){
     body{
         overflow-x: hidden;
-    } 
+    }
     .player-section .col-lg-3{
         width: 92%;
     }
@@ -1115,7 +1115,7 @@ margin-top: 7px;
 }
 #sidebar .fa {
     font-size: 16px;
-} 
+}
 .sb_title {
     padding-left: 2px;
     color: #606060;
@@ -1178,7 +1178,7 @@ margin-top: 7px;
 	top: 0;
 }
 .top-nav .sidebar-active{
-left: 0px !important; 
+left: 0px !important;
 }
 .search-modal {
     position: fixed;
