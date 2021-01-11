@@ -991,7 +991,7 @@ margin-top: 7px;
         background: #ccc;
     }
     .view-group .views-count{
-        display: none;
+        /*display: none;*/
     }
     #sw_comm{
         display: inline-block;
