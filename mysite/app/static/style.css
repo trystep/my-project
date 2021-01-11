@@ -592,7 +592,7 @@ input:checked+.slider {
     transition: .4s;
 }
 .switch input, .vscrollbar {
-    display: none;
+    /*display: none;*/
 }
 .switch {
     position: relative;
@@ -789,7 +789,7 @@ color: #333;
     border-bottom: 1px solid #dee2e6;
 }
 .nav-tabs .dropdown-toggle::after {
-display: none;
+/*display: none;*/
 }
 .vdesc{
     text-decoration: none;
@@ -921,7 +921,7 @@ display: none;
 }
 @media (min-width: 576px) {
     .visible-xs{
-        display: none;
+        /*display: none;*/
     }
     .search-section{
         display: -webkit-box;
@@ -965,7 +965,7 @@ display: none;
         margin-top: 1px;
     }
     .next-videos-container::before{
-        display: none;
+        /*display: none;*/
     }
     .player-section .col-lg-3 {
         margin-left: 15px;
@@ -975,7 +975,7 @@ display: none;
         max-width: 96%;
     }
     .advert-section{
-        display: none;
+        /*display: none;*/
     }
     #disl_num{
 display: inline-block;
@@ -991,7 +991,7 @@ margin-top: 7px;
         background: #ccc;
     }
     .view-group .views-count{
-        display: none;
+        /*display: none;*/
     }
     #sw_comm{
         display: inline-block;
@@ -1009,7 +1009,7 @@ margin-top: 7px;
         margin-right: 20px;
     }
     .comment-section{
-
+        /*display: none;*/
     }
    .logo-block .visible-xs{
     display: block;
@@ -1020,7 +1020,7 @@ margin-top: 7px;
                 justify-content: flex-end;
     }
     .search-section{
-        display: none;
+        /*display: none;*/
     }
     .logo-block {
         -ms-flex: 0 0 32.333333%;
@@ -1056,7 +1056,7 @@ margin-top: 7px;
         display: block;
     }
     .replay{
-        display: none;
+        /*display: none;*/
     }
     .footer .container-fluid{
         text-align: center;

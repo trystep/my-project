@@ -64,13 +64,11 @@
                         <div class="decription-video-block-nav-text">
                             <li class="vdesc">
                                 {% autoescape off %}
-                                    {{desc}}
+                                {{desc}}
                                 {% endautoescape %}
                             </li>
                             <div class="decription-rubrick"></div>
-                            <div class="decription-video-comentCount"><span></span><i id="sw_comm"
-                                                                                      class="fa fa-caret-down fa-2x mob_hide"
-                                                                                      style=""></i></div>
+
                             <div class="comment-section">
                                 {% for author, comment in comments %}
                                 <div class="comments-block">
