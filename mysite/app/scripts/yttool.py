@@ -352,8 +352,6 @@ class CommentReader:
                 #     self.recursecomments(subcc, level + 1)
             return data
 
-
-
     def getcontinuation(self, p):
         p = getitem(p, "continuations", 0, "nextContinuationData")
         if not p:
@@ -901,7 +899,8 @@ def search_view():
     url = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": idvalue})
     cfg = yt.getpageinfo(url)
     lst = SearchReader(args, yt, cfg)
-    return lst.recursesearch()
+    data = lst.recursesearch()
+    return data[:18]
 
 
 def comment_view():
@@ -914,8 +913,8 @@ def comment_view():
 
 
 if __name__ == '__main__':
-    a=detail_view()
-    print(a['description'])
+    # a=detail_view()
+    # print(a['description'])
     # print(detail_view())
-    # print(search_view())
+    print(search_view())
     # print(comment_view())

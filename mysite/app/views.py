@@ -30,6 +30,7 @@ def search(request, slug=''):
     cfg = yt.getpageinfo(url)
     lst = SearchReader(args, yt, cfg)
     data = lst.recursesearch()
+    data = data[:18]
     context = {"data": data, }
     return render(request, 'base.html', context=context)
 
