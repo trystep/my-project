@@ -5,7 +5,7 @@ def sitemap_gen(path):
     for line in new_key:
         new_url = """
     <url>
-        <loc>https://www.clipic.ru/?search=""" + line.replace('\n', '') + """</loc>
+        <loc>https://www.clipic.ru/?search=""" + line.replace('\n', '').replace('&', '') + """</loc>
         <lastmod>2021-01-13</lastmod>
         <priority>0.8</priority>
     </url>"""
