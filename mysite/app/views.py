@@ -20,10 +20,12 @@ def search(request, slug=''):
     keyword = slug or urllib.parse.quote(request.GET.get('search', ''))
     try:
         word_file = "/home/django/my-project/mysite/app/scripts/keywords.csv"
-        WORDS = open(word_file).read().splitlines()
+        words = open(word_file).read().splitlines()
     except:
-        WORDS = ['lol', 'pop', 'news']
-    random_word = random.choice(WORDS)
+        words = ['lol', 'pop', 'news', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+                 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
+                 'x', 'c', 'v', 'b', 'n', 'm']
+    random_word = random.choice(words)
     if not keyword:
         keyword = random_word
     url = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": keyword})
