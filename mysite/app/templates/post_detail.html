@@ -111,16 +111,19 @@
                     </div>
                 </div>
                 <div class="next-videos-container row">
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-4 next-videos-blocks"><a
+                    <div class="col-lg-10  col-md-10 col-sm-10 col-8 next-videos-blocks"><a
                             class="next-videos-blocks_link" href="/video/{{data.id}}"><img
                             src="http://i.ytimg.com/vi/{{data.id}}/mqdefault.jpg"></a></div>
-                    <div class="col-lg-6  col-md-6 col-sm-6 col-5 next-videos-blocks"><a
-                            class="next-videos-blocks_link_tile">{{data.title}}</a>
-                        <p class="next-videos-blocks_chanel">{{data.owner}}</p>
-                        <p class="next-videos-blocks_viewCount">{{data.view_count}}</p>
-
-                    </div>
                 </div>
+                {% if random_video %}
+                {% for id in random_video %}
+                <div class="next-videos-container row">
+                    <div class="col-lg-10  col-md-10 col-sm-10 col-8 next-videos-blocks"><a
+                            class="next-videos-blocks_link" href="/video/{{id}}"><img
+                            src="http://i.ytimg.com/vi/{{id}}/mqdefault.jpg"></a></div>
+                </div>
+                {% endfor %}
+                {% endif %}
             </div>
 
         </div>

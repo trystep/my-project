@@ -22,6 +22,7 @@ def search(request, slug=''):
         word_file = "/home/django/my-project/mysite/app/scripts/keywords.csv"
         words = open(word_file).read().splitlines()
     except:
+        # TODO::fixme
         words = ['lol', 'pop', 'news', '1', '2', '3', '4', '5', '6', '7', '8', '9',
                  'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'z',
                  'x', 'c', 'v', 'b', 'n', 'm']
@@ -47,15 +48,17 @@ def post_detail(request, slug):
     cfg = yt.getpageinfo(url)
     lst = DetailReader(args, yt, cfg)
     data = lst.output()
-    desc = data['description']
     try:
+        desc = data['description']
         desc = desc.replace("\n", '<br>')
     except:
         desc = ''
     comment = CommentReader(args, yt, cfg)
     comments = comment.recursecomments()
+    # TODO::fixme
+    random_video_id = ['x0ChgNP7FNY', 'biWrymIuc1Q', '1VXto3CTHcM', 'zF5Ddo9JdpY', '8PbhGt8XxSM'][:5]
 
-    context = {"data": data, "comments": comments, 'desc': desc}
+    context = {"data": data, "comments": comments, 'desc': desc, 'random_video': random_video_id}
     return render(request, 'post_detail.html', context=context)
 
 
