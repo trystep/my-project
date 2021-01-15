@@ -66,7 +66,10 @@ def getitem(d, *path):
         elif type(k) == int:
             d = d[k]
         else:
-            d = d.get(k)
+            try:
+                d = d.get(k)
+            except:
+                return
 
         if d is None:
             return
